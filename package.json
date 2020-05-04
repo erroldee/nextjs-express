@@ -4,12 +4,16 @@
     "description": "NextJS, Firebase, ExpressJS Starter Stack",
     "main": "index.js",
     "scripts": {
-        "build:server": "tsc --project tsconfig.server.json",
-        "build:next": "next build",
-        "build": "npm run build:next && npm run build:server",
-        "prod:windows": "set NODE_ENV=production&& node dist/index.js",
-        "prod:mac": "NODE_ENV=production node dist/index.js",
-        "start": "npm run build && npm run prod:windows"
+        "dev:build:next": "next build",
+        "dev:build:server": "ts-node --project tsconfig.server.json server/www.ts",
+        "prod:build:server": "tsc --project tsconfig.server.json",
+        "prod:build:next": "next build",
+        "prod:build": "npm run prod:build:next && npm run prod:build:server",
+        "prod:windows": "set NODE_ENV=production&& node dist/www.js",
+        "prod:mac": "NODE_ENV=production node dist/www.js",
+        "dev": "npm run dev:build:server",
+        "prod": "npm run build && npm run prod:windows",
+        "start": "npm run dev"
     },
     "keywords": [
         "nextjs",
@@ -19,13 +23,22 @@
     "author": "Errol Edric Dee",
     "license": "ISC",
     "dependencies": {
+        "axios": "^0.19.2",
+        "body-parser": "^1.19.0",
+        "classnames": "^2.2.6",
+        "compression": "^1.7.4",
         "express": "^4.17.1",
+        "mongoose": "^5.9.11",
         "next": "^9.3.6",
         "react": "^16.13.1",
-        "react-dom": "^16.13.1"
+        "react-dom": "^16.13.1",
+        "sass": "^1.26.5"
     },
     "devDependencies": {
+        "@types/body-parser": "^1.19.0",
+        "@types/compression": "^1.7.0",
         "@types/express": "^4.17.6",
+        "@types/mongoose": "^5.7.14",
         "@types/node": "^13.13.4",
         "@types/react": "^16.9.34",
         "ts-node": "^8.9.1",
