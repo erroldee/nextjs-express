@@ -9,12 +9,12 @@ export class SampleHelper {
         return [
             {
                 id: 1,
-                title: "Two Forms of Pre-rendering",
+                title: "Title 1",
                 date: "2020-01-01"
             },
             {
                 id: 2,
-                title: "When to Use Static Generation v.s. Server-side Rendering",
+                title: "Title 2",
                 date: "2020-01-02"
             }
         ];
@@ -31,14 +31,14 @@ export class SampleHelper {
             case 1:
                 sampleInfo = {
                     id: 1,
-                    title: "Two Forms of Pre-rendering",
+                    title: "Title 1",
                     date: "2020-01-01"
                 };
                 break;
             case 2:
                 sampleInfo = {
                     id: 2,
-                    title: "When to Use Static Generation v.s. Server-side Rendering",
+                    title: "Title 2",
                     date: "2020-01-02"
                 };
                 break;

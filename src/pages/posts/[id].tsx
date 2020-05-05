@@ -2,8 +2,9 @@ import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 import PostsLayout from "../../layouts/posts/posts.layout";
-import {GetStaticPaths, GetStaticProps} from "next";
+import {GetServerSideProps} from "next";
 import {PostServices} from "./post.services";
+import {MapHostNameHelper} from "../../helpers/mapHostName.helper";
 
 const PostPage = ({ info }) => {
     const { id, title, date } = info;
@@ -22,29 +23,15 @@ const PostPage = ({ info }) => {
     )
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
+    MapHostNameHelper.mapURL(req);
+
     const { info } = await PostServices.getSampleInfo(Number(params.id));
 
     return {
         props: {
             info
         }
-    }
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-    const { ids } = await PostServices.getSampleIds();
-    const paths = ids.map(id => {
-        return {
-            params: {
-                id: String(id)
-            }
-        }
-    });
-
-    return {
-        paths,
-        fallback: false
     }
 };
 

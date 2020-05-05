@@ -4,8 +4,9 @@ import Head from "next/head";
 import MainLayout from "../layouts/main/main.layout";
 import MainComponent from "../components/main/main.component";
 import FooterComponent from "../components/footer/footer.component";
-import {GetStaticProps} from "next";
+import {GetServerSideProps} from "next";
 import {IndexServices} from "./index.services";
+import {MapHostNameHelper} from "../helpers/mapHostName.helper";
 
 const IndexPage = ({ posts }) => {
     return (
@@ -22,7 +23,9 @@ const IndexPage = ({ posts }) => {
     );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+    MapHostNameHelper.mapURL(req);
+
     const { posts } = await IndexServices.getSample();
 
     return {
