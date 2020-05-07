@@ -4,7 +4,6 @@
     "description": "NextJS, Firebase, ExpressJS Starter Stack",
     "main": "index.js",
     "scripts": {
-        "dev:build:next": "next build",
         "dev:build:server": "ts-node --project tsconfig.server.json server/www.ts",
         "prod:build:server": "tsc --project tsconfig.server.json",
         "prod:build:next": "next build",
@@ -12,7 +11,7 @@
         "prod:windows": "set NODE_ENV=production&& node dist/www.js",
         "prod:mac": "NODE_ENV=production node dist/www.js",
         "dev": "npm run dev:build:server",
-        "prod": "npm run build && npm run prod:windows",
+        "prod": "npm run prod:build && npm run prod:windows",
         "start": "npm run dev"
     },
     "keywords": [
