@@ -1,8 +1,6 @@
-import axios from "axios";
-import {Constants} from "../../constants/constants";
-import mongooseMiddleware from "../../helpers/middleware.helper";
+import mongooseMiddleware from "../helpers/middleware.helper";
 
-export class StaticPostServices {
+export class StaticService {
     static getSampleIds = async () => {
         const {connection, models} = await mongooseMiddleware();
 

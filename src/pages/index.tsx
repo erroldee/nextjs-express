@@ -5,8 +5,8 @@ import MainLayout from "../layouts/main/main.layout";
 import MainComponent from "../components/main/main.component";
 import FooterComponent from "../components/footer/footer.component";
 import {GetServerSideProps} from "next";
-import {IndexServices} from "./index.services";
 import {MapHostNameHelper} from "../helpers/mapHostName.helper";
+import {SampleService} from "../services/sample.service";
 
 const IndexPage = ({ posts }) => {
     return (
@@ -26,7 +26,7 @@ const IndexPage = ({ posts }) => {
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     MapHostNameHelper.mapURL(req);
 
-    const { posts } = await IndexServices.getSample();
+    const { posts } = await SampleService.getSample();
 
     return {
         props: {

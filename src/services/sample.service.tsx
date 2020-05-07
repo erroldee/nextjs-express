@@ -1,7 +1,12 @@
 import axios from "axios";
-import {Constants} from "../../constants/constants";
+import {Constants} from "../constants/constants";
 
-export class PostServices {
+export class SampleService {
+    static getSample = async () => {
+        const { data } = await axios.get(Constants.hostURL + "/api/sample");
+        return data;
+    };
+
     static getSampleIds = async () => {
         const { data } = await axios.get(Constants.hostURL + "/api/sample/sampleIds");
         return data;

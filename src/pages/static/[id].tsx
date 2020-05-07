@@ -3,7 +3,7 @@ import Link from "next/link";
 import Head from "next/head";
 import PostsLayout from "../../layouts/posts/posts.layout";
 import {GetStaticPaths, GetStaticProps} from "next";
-import {StaticPostServices} from "./staticpost.services";
+import {StaticService} from "../../services/static.service";
 
 const StaticPostPage = ({ info }) => {
     const { id, title, date } = info;
@@ -23,7 +23,7 @@ const StaticPostPage = ({ info }) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const info = await StaticPostServices.getSampleInfo(Number(params.id));
+    const info = await StaticService.getSampleInfo(Number(params.id));
 
     console.log(info);
 
@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const ids = await StaticPostServices.getSampleIds();
+    const ids = await StaticService.getSampleIds();
 
     const paths = ids.map(id => {
         return {

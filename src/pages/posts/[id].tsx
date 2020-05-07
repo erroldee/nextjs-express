@@ -3,8 +3,8 @@ import Link from "next/link";
 import Head from "next/head";
 import PostsLayout from "../../layouts/posts/posts.layout";
 import {GetServerSideProps} from "next";
-import {PostServices} from "./post.services";
 import {MapHostNameHelper} from "../../helpers/mapHostName.helper";
+import {SampleService} from "../../services/sample.service";
 
 const PostPage = ({ info }) => {
     const { id, title, date } = info;
@@ -26,7 +26,7 @@ const PostPage = ({ info }) => {
 export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
     MapHostNameHelper.mapURL(req);
 
-    const { info } = await PostServices.getSampleInfo(Number(params.id));
+    const { info } = await SampleService.getSampleInfo(Number(params.id));
 
     return {
         props: {
